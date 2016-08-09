@@ -4,7 +4,7 @@ GitとVisualStudioとUWPの勉強用
 ##使い方
 ###設定
 ```cs
-new Mio()
+var mio = new Mio()
         .setDevId("")
         .setRedirectUri("")
         .setToken("");
@@ -12,15 +12,15 @@ new Mio()
 
 ###認証URL取得
 ```cs
-string url = MainPage.mio.getAuthorizationUrl("state");
+string url = mio.getAuthorizationUrl("state");
 ```
 
 ###情報取得
 ```cs
 try
 {
-        CouponStatus couponStatus = await MainPage.mio.getCoupon();
-        PacketStatus packetStatus = await MainPage.mio.getPacket();
+        CouponStatus couponStatus = await mio.getCoupon();
+        PacketStatus packetStatus = await mio.getPacket();
 }
 catch (WebException e)
 {
