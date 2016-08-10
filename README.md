@@ -1,8 +1,8 @@
-# OneMioSharp
+# MioSharp
 GitとVisualStudioとUWPの勉強用  
 
-##使い方
-###設定
+## 使い方
+### 設定
 ```cs
 var mio = new Mio()
         .setDevId("")
@@ -10,12 +10,12 @@ var mio = new Mio()
         .setToken("");
 ```
 
-###認証URL取得
+### 認証URL取得
 ```cs
 string url = mio.getAuthorizationUrl("state");
 ```
 
-###情報取得
+### 情報取得
 ```cs
 try
 {
