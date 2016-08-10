@@ -27,3 +27,18 @@ catch (WebException e)
 
 }
 ```
+
+### クーポン切り替え
+```cs
+var dic = new Dictionary<string, bool>();
+dic["hdo00000000"] = true;
+
+try
+{
+        await mio.setCoupon(switchDic);
+}
+catch (WebException e)
+{
+
+}
+```
