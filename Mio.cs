@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Runtime.Serialization.Json;
@@ -102,7 +103,29 @@ namespace MioSharp
             }
         }
 
-        public async Task setCoupon(SwitchStatus info)
+        public async Task setCoupon(Dictionary<string, bool> dic)
+        {
+            var status = new SwitchStatus();
+            status.switchInfos = new List<SwitchCouponInfo>();
+
+            var info = new SwitchCouponInfo();
+            info.switchHdoInfo = new List<SwitchHdoInfo>();
+
+            foreach (var item in dic)
+            {
+                var hdo = new SwitchHdoInfo();
+                hdo.hdoServiceCode = item.Key;
+                hdo.couponUse = item.Value;
+
+                info.switchHdoInfo.Add(hdo);
+            }
+
+            status.switchInfos.Add(info);
+
+            await setCoupon(status);
+        }
+
+        private async Task setCoupon(SwitchStatus info)
         {
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(switchUrl);
             req.Method = "PUT";
